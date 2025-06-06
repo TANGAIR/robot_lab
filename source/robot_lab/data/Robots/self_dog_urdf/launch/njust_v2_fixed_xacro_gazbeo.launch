@@ -1,0 +1,11 @@
+<launch>
+    <arg name="rname" default="njust_v2_fixed"/>
+
+    <param name="robot_description" command="$(find xacro)/xacro $(find njust_v2_fixed_description)/xacro/robot.xacro" />
+
+    <include file="$(find gazebo_ros)/launch/empty_world.launch" />
+   
+    <node pkg="gazebo_ros" type="spawn_model" name="urdf_spawner" respawn="false" output="screen"
+          args="-urdf -z 0.6 -model $(arg rname)_gazebo -param robot_description -unpause"/>
+
+</launch>
